@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Main;
-
-import Form.HomeForm;
+import Form.History;
+import Form.Home;
+import Form.Menu;
+import Form.Wallet;
 import java.awt.Color;
-
 /**
  *
  * @author mac
@@ -28,7 +29,7 @@ public class Mainn extends javax.swing.JFrame {
         
         Menu.setBackground(Har);
         Home.setBackground(Har);
-        Rating.setBackground(Har);
+        Wallet.setBackground(Har);
         History.setBackground(Har);
     }
 
@@ -47,11 +48,15 @@ public class Mainn extends javax.swing.JFrame {
         HomeWord = new javax.swing.JLabel();
         Menu = new javax.swing.JPanel();
         MenuWord = new javax.swing.JLabel();
-        Rating = new javax.swing.JPanel();
+        Wallet = new javax.swing.JPanel();
         RatingWord = new javax.swing.JLabel();
         History = new javax.swing.JPanel();
         HistoryWord = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Name = new javax.swing.JLabel();
         InfoPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,10 +82,10 @@ public class Mainn extends javax.swing.JFrame {
         Home.setLayout(HomeLayout);
         HomeLayout.setHorizontalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(HomeWord)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,10 +111,10 @@ public class Mainn extends javax.swing.JFrame {
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MenuLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MenuLayout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(MenuWord)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,31 +125,32 @@ public class Mainn extends javax.swing.JFrame {
 
         jPanel2.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 140, 40));
 
-        Rating.setBackground(new java.awt.Color(35, 35, 35));
-        Rating.addMouseListener(new java.awt.event.MouseAdapter() {
+        Wallet.setBackground(new java.awt.Color(35, 35, 35));
+        Wallet.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                RatingMousePressed(evt);
+                WalletMousePressed(evt);
             }
         });
 
         RatingWord.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         RatingWord.setForeground(new java.awt.Color(140, 140, 140));
-        RatingWord.setText("  Rating");
+        RatingWord.setText("Wallet");
 
-        javax.swing.GroupLayout RatingLayout = new javax.swing.GroupLayout(Rating);
-        Rating.setLayout(RatingLayout);
-        RatingLayout.setHorizontalGroup(
-            RatingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RatingLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(RatingWord, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout WalletLayout = new javax.swing.GroupLayout(Wallet);
+        Wallet.setLayout(WalletLayout);
+        WalletLayout.setHorizontalGroup(
+            WalletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WalletLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(RatingWord, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
-        RatingLayout.setVerticalGroup(
-            RatingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        WalletLayout.setVerticalGroup(
+            WalletLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(RatingWord, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel2.add(Rating, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 40));
+        jPanel2.add(Wallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 40));
 
         History.setBackground(new java.awt.Color(35, 35, 35));
         History.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,9 +168,10 @@ public class Mainn extends javax.swing.JFrame {
         History.setLayout(HistoryLayout);
         HistoryLayout.setHorizontalGroup(
             HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HistoryLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(HistoryWord, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HistoryLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(HistoryWord, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         HistoryLayout.setVerticalGroup(
             HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,14 +180,52 @@ public class Mainn extends javax.swing.JFrame {
 
         jPanel2.add(History, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 140, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 135, 700));
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("@ MyBuuz");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 1080, 100));
 
-        InfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 1080, 600));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pic/icons8-user-menu-male-48(1).png"))); // NOI18N
+
+        Name.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
+        );
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 150, 70));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 1070, 100));
+
+        InfoPanel.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 1070, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,41 +249,54 @@ public class Mainn extends javax.swing.JFrame {
         RatingWord.setForeground(DefaultColor);
         HistoryWord.setForeground(DefaultColor);
         HomeWord.setForeground(ClickedColor);
-        Rating.setBackground(Har);
+        Wallet.setBackground(Har);
         History.setBackground(Har);
+        Home home1 = new Home();
+        InfoPanel.removeAll();
+        InfoPanel.add(home1).setVisible(true);
     }//GEN-LAST:event_HomeMousePressed
 
     private void MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMousePressed
         Menu.setBackground(BackColor);
         Home.setBackground(Har);
         MenuWord.setForeground(ClickedColor);
-        Rating.setBackground(Har);
+        Wallet.setBackground(Har);
         History.setBackground(Har);
         HomeWord.setForeground(DefaultColor);
         RatingWord.setForeground(DefaultColor);
         HistoryWord.setForeground(DefaultColor);
+        Menu menu1 = new Menu();
+        InfoPanel.removeAll();
+        InfoPanel.add(menu1).setVisible(true);
     }//GEN-LAST:event_MenuMousePressed
 
-    private void RatingMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RatingMousePressed
+    private void WalletMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WalletMousePressed
         Menu.setBackground(Har);
         Home.setBackground(Har);
         RatingWord.setForeground(ClickedColor);
-        Rating.setBackground(BackColor);
+        Wallet.setBackground(BackColor);
         History.setBackground(Har);
         MenuWord.setForeground(DefaultColor);
         HomeWord.setForeground(DefaultColor);
         HistoryWord.setForeground(DefaultColor);
-    }//GEN-LAST:event_RatingMousePressed
+        Wallet wallet1 = new Wallet();
+        InfoPanel.removeAll();
+        InfoPanel.add(wallet1).setVisible(true);
+    }//GEN-LAST:event_WalletMousePressed
 
     private void HistoryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryMousePressed
         Menu.setBackground(Har);
         Home.setBackground(Har);
         HistoryWord.setForeground(ClickedColor);
-        Rating.setBackground(Har);
+        Wallet.setBackground(Har);
         History.setBackground(BackColor);
         MenuWord.setForeground(DefaultColor);
         HomeWord.setForeground(DefaultColor);
         RatingWord.setForeground(DefaultColor);
+        History history1 = new History();
+        InfoPanel.removeAll();
+        InfoPanel.add(history1).setVisible(true);
+        
     }//GEN-LAST:event_HistoryMousePressed
 
     /**
@@ -284,10 +342,14 @@ public class Mainn extends javax.swing.JFrame {
     private javax.swing.JPanel InfoPanel;
     private javax.swing.JPanel Menu;
     private javax.swing.JLabel MenuWord;
-    private javax.swing.JPanel Rating;
+    private javax.swing.JLabel Name;
     private javax.swing.JLabel RatingWord;
+    private javax.swing.JPanel Wallet;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

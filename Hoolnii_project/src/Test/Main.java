@@ -25,8 +25,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import MaybeWe.GUI;
-import MaybeWe.Login;
-import MaybeWe.SignUp;
+import Main.Login;
+import Main.SignUp;
 import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 

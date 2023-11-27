@@ -1,4 +1,5 @@
-package MaybeWe;
+package Main;
+import MaybeWe.GUI;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -47,9 +48,7 @@ public class Login extends JFrame {
     private JTextField Phonenumber;
     private JPasswordField passwordField;
     private JTextField Line;
-    /**
-     * Launch the application.
-     */
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -63,10 +62,6 @@ public class Login extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
-
     public Login() {
     	contentPane = new JPanel();
         contentPane.setBackground(new Color(230, 230, 230));
@@ -74,7 +69,7 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 120, 900, 600);
         setResizable(false);
-        setTitle("Нэвтрэх");
+        setTitle("Login");
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
@@ -90,7 +85,7 @@ public class Login extends JFrame {
         contentPane.add(leftPanel);
         leftPanel.setLayout(null);
         
-        JLabel Ug1 = new JLabel("Шинэ Монгол ");
+        JLabel Ug1 = new JLabel("New Mongol");
         Ug1.setBounds(100, 290, 119, 36);
         Ug1.setFont(new Font("Tahoma", Font.PLAIN, 16));
         Ug1.setForeground(new Color( 216, 217, 219));
@@ -104,27 +99,27 @@ public class Login extends JFrame {
         MyBuuz_1.setFont(new Font("Dialog", Font.BOLD, 30));
         leftPanel.add(MyBuuz_1);
         
-        JLabel Ug2 = new JLabel("Технологийн Коллеж ");
+        JLabel Ug2 = new JLabel("College of Technology");
         Ug2.setBounds(74, 314, 167, 36);
         Ug2.setForeground(new Color(216, 217, 219));
         Ug2.setFont(new Font("Tahoma", Font.PLAIN, 16));
         leftPanel.add(Ug2);
         
-        JLabel Ug3 = new JLabel("хоол захиалгын апп");
+        JLabel Ug3 = new JLabel(" food ordering app");
         Ug3.setBounds(80, 338, 167, 36);
         Ug3.setForeground(new Color(216, 217, 219));
         Ug3.setFont(new Font("Tahoma", Font.PLAIN, 16));
         leftPanel.add(Ug3);
         
-        JLabel ShineUserBurtgel = new JLabel("Бүртгэлтэй хаягаар нэвтрэх");
-        ShineUserBurtgel.setBounds(454, 34, 301, 35);
+        JLabel ShineUserBurtgel = new JLabel("Login to your account");
+        ShineUserBurtgel.setBounds(490, 33, 190, 35);
         ShineUserBurtgel.setFont(new Font("Tahoma", Font.PLAIN, 19));
         contentPane.add(ShineUserBurtgel);
         whitePanel.setLayout(null);
         
         // number panel
         
-        JLabel lblphonenumber = new JLabel("Утасны дугаар");
+        JLabel lblphonenumber = new JLabel("Phone number");
         lblphonenumber.setBounds(65, 30, 175, 19);
         lblphonenumber.setForeground(Color.BLACK);
         lblphonenumber.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -138,7 +133,7 @@ public class Login extends JFrame {
         
         // password panel
         
-        JLabel lblpassword = new JLabel("Нууц код");
+        JLabel lblpassword = new JLabel("Password");
         lblpassword.setBounds(65, 130, 123, 19);
         lblpassword.setForeground(Color.BLACK);
         lblpassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -148,8 +143,8 @@ public class Login extends JFrame {
         passwordField.setBounds(65, 161, 220, 36);
         whitePanel.add(passwordField);
         
-        JButton NewtrehButton = new JButton("НЭВТРЭХ");
-        NewtrehButton.setBounds(390, 376, 382, 41);
+        JButton NewtrehButton = new JButton("LOGIN");
+        NewtrehButton.setBounds(449, 376, 267, 41);
         NewtrehButton.setFont(new Font("Arial", Font.PLAIN, 13));
         NewtrehButton.setBackground(Color.BLACK);
         NewtrehButton.addActionListener(new ActionListener() {
@@ -161,16 +156,16 @@ public class Login extends JFrame {
             		Connection con=null;
             		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/MyBuuz", "root", "Zunsod12");
             		java.sql.Statement stmt=con.createStatement();
-            		ResultSet rs=stmt.executeQuery("select * from Account where mobile_number='"+Phone+"' and password='"+password+"'");
+            		ResultSet rs=stmt.executeQuery("select * from Accounts where mobile_number='"+Phone+"' and password='"+password+"'");
             		if(rs.next()) {
-            			 JOptionPane.showMessageDialog(null, "Амжилттай нэвтэрлээ");
+            			 JOptionPane.showMessageDialog(null, "Successfully logged in!");
             			 dispose();
             			 String Phone1=Phonenumber.getText();
             			 String password1=passwordField.getText();
             			 GUI mm = new GUI(password1);
             			 mm.show();
             			 }else {
-            				JOptionPane.showMessageDialog(null, "Нэвтрэх нэр эсвэл нууц үг буруу байна");
+            				JOptionPane.showMessageDialog(null, "Incorrect password or phone number!");
             			}
             		}catch(ClassNotFoundException e1) {
             			System.out.println(e1);
@@ -190,24 +185,28 @@ public class Login extends JFrame {
         contentPane.add(Line);
         Line.setColumns(10);
         // SignUp shiljilt
-        JButton BurtguulehButton = new JButton("БҮРТГҮҮЛЭХ");
-        BurtguulehButton.setBounds(449, 469, 267, 35);
+        JButton BurtguulehButton = new JButton("SIGNUP NOW");
+        BurtguulehButton.setBounds(504, 483, 148, 35);
         BurtguulehButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		JOptionPane.showMessageDialog(null,"Хуудас солигдлоо!");
+        		JOptionPane.showMessageDialog(null,"The page has changed!");
         		SignUp guiSign = new SignUp();
         		dispose();
-//        		try{
-//        			Thread.sleep(200);
-//        		}
-//        		catch(Exception e2 ) {throw new RuntimeException(e2);}
+        		try{
+        			Thread.sleep(200);
+        		}
+        		catch(Exception e2 ) {throw new RuntimeException(e2);}
                 guiSign.show();
         	}
         });
         BurtguulehButton.setForeground(Color.BLACK);
         BurtguulehButton.setBackground(Color.BLACK);
-        BurtguulehButton.setFont(new Font("Arial", Font.PLAIN, 11));
+        BurtguulehButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
         contentPane.add(BurtguulehButton);
+        
+        JLabel lblNewLabel = new JLabel("New user?");
+        lblNewLabel.setBounds(548, 455, 78, 16);
+        contentPane.add(lblNewLabel);
 
     }
 }

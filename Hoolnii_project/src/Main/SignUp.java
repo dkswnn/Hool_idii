@@ -1,4 +1,6 @@
-package MaybeWe;
+package Main;
+import Main.Login;
+import Main.Mainn;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -27,6 +29,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -76,7 +79,7 @@ public class SignUp extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 120, 900, 600);
         setResizable(false);
-        setTitle("Бүртгэл");
+        setTitle("SignUp");
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
@@ -92,7 +95,7 @@ public class SignUp extends JFrame {
         contentPane.add(leftPanel);
         leftPanel.setLayout(null);
         
-        JLabel Ug1 = new JLabel("Шинэ Монгол ");
+        JLabel Ug1 = new JLabel("New Mongol");
         Ug1.setBounds(100, 290, 119, 36);
         Ug1.setFont(new Font("Tahoma", Font.PLAIN, 16));
         Ug1.setForeground(new Color( 216, 217, 219));
@@ -104,13 +107,13 @@ public class SignUp extends JFrame {
         MyBuuz_1.setFont(new Font("Tahoma", Font.BOLD, 30));
         leftPanel.add(MyBuuz_1);
         
-        JLabel Ug2 = new JLabel("Технологийн Коллеж ");
+        JLabel Ug2 = new JLabel("College of Technology");
         Ug2.setBounds(74, 314, 167, 36);
         Ug2.setForeground(new Color(216, 217, 219));
         Ug2.setFont(new Font("Tahoma", Font.PLAIN, 16));
         leftPanel.add(Ug2);
         
-        JLabel Ug3 = new JLabel("хоол захиалгын апп");
+        JLabel Ug3 = new JLabel("food ordering app");
         Ug3.setBounds(80, 338, 167, 36);
         Ug3.setForeground(new Color(216, 217, 219));
         Ug3.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -138,17 +141,17 @@ public class SignUp extends JFrame {
         
 
         
-        JLabel ShineUserBurtgel = new JLabel("Шинэ хэрэглэгчийн бүртгэл");
-        ShineUserBurtgel.setBounds(475, 41, 267, 41);
-        ShineUserBurtgel.setFont(new Font("Tahoma", Font.PLAIN, 19));
+        JLabel ShineUserBurtgel = new JLabel("New User Registration ");
+        ShineUserBurtgel.setBounds(506, 34, 227, 41);
+        ShineUserBurtgel.setFont(new Font("Arial", Font.PLAIN, 19));
         contentPane.add(ShineUserBurtgel);
         whitePanel.setLayout(null);
         
         //name panel
 		
-        lblName = new JLabel("Нэр");
-        lblName.setBounds(51, 114, 36, 19);
-        lblName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblName = new JLabel("Lastname");
+        lblName.setBounds(51, 114, 123, 19);
+        lblName.setFont(new Font("Arial", Font.PLAIN, 15));
         lblName.setForeground(Color.black);
         whitePanel.add(lblName);
 
@@ -160,10 +163,10 @@ public class SignUp extends JFrame {
         
         // number panel
         
-        JLabel lblphonenumber = new JLabel("Утасны дугаар");
+        JLabel lblphonenumber = new JLabel("Phone number");
         lblphonenumber.setBounds(298, 24, 175, 19);
         lblphonenumber.setForeground(Color.BLACK);
-        lblphonenumber.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblphonenumber.setFont(new Font("Arial", Font.PLAIN, 15));
         whitePanel.add(lblphonenumber);
         
         Phonenumber = new JTextField();
@@ -174,10 +177,10 @@ public class SignUp extends JFrame {
         
         // ovog panel
         
-        JLabel lblfirstname = new JLabel("Овог");
-        lblfirstname.setBounds(51, 24, 36, 19);
+        JLabel lblfirstname = new JLabel("Firstname");
+        lblfirstname.setBounds(51, 24, 123, 19);
         lblfirstname.setForeground(Color.BLACK);
-        lblfirstname.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblfirstname.setFont(new Font("Arial", Font.PLAIN, 15));
         whitePanel.add(lblfirstname);
         
         Firstname = new JTextField();
@@ -188,45 +191,57 @@ public class SignUp extends JFrame {
         
         // password panel
         
-        JLabel lblpassword = new JLabel("Нэвтрэх код");
+        JLabel lblpassword = new JLabel("Password");
         lblpassword.setBounds(298, 114, 123, 19);
         lblpassword.setForeground(Color.BLACK);
-        lblpassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblpassword.setFont(new Font("Arial", Font.PLAIN, 15));
         whitePanel.add(lblpassword);
         
         passwordField = new JPasswordField();
         passwordField.setBounds(298, 147, 150, 26);
         whitePanel.add(passwordField);
         
-        JButton SignUpButton = new JButton("БҮРТГҮҮЛЭХ");
+        JButton SignUpButton = new JButton("SIGNUP");
         SignUpButton.setFont(new Font("Arial", Font.PLAIN, 13));
         SignUpButton.setBackground(Color.BLACK);
-        SignUpButton.setBounds(415, 378, 367, 41);
+        SignUpButton.setBounds(466, 378, 267, 41);
         SignUpButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		     
                 
                 try {
-                	String firstname1 = Firstname.getText();
+                    String detecting = null;
+                    String firstname1 = Firstname.getText();
                     String lastName = Lastname.getText();
                     String mobileNumber = Phonenumber.getText();
                     String password = passwordField.getText();   
+                    if(firstname1.equals("") || lastName.equals("") || mobileNumber.equals("") || password.equals("")){
+                        JOptionPane.showMessageDialog(null,"Something is blank, Please check again!");
+                    }else{
+                        
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+            		Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/MyBuuz", "root", "Zunsod12");          		
+            		java.sql.Statement stmt=con.createStatement();
+                        String SQL="select*from Accounts where mobile_number = '"+mobileNumber+"'";
+                        ResultSet rs = stmt.executeQuery(SQL);
+                        
+                        if(rs.next()){
+                            JOptionPane.showMessageDialog(null,"Phone number already exists, Please use another number!");
+                        }else{                        
+                            String query = ("INSERT INTO Accounts(first_name,last_name,mobile_number,password)values(?,?,?,?)");               
+                            PreparedStatement sta = con.prepareStatement(query);
                     
-                    String query = ("INSERT INTO Account(first_name,last_name,mobile_number,password)values(?,?,?,?)");
-                    
-
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/MyBuuz", "root", "Zunsod12");
-                    PreparedStatement sta = connection.prepareStatement(query);
-                    sta.setString(1, firstname1);
-                    sta.setString(2, lastName);
-                    sta.setString(3, mobileNumber);
-                    sta.setString(4, password);
-                    sta.executeUpdate();
-                    JOptionPane.showMessageDialog(null,"Амжилттай бүртгэгдлээ!");
-                    GUI guiForm=new GUI(lastName);
-                    dispose();
-                    guiForm.show();
+                            sta.setString(1, firstname1);
+                            sta.setString(2, lastName);
+                            sta.setString(3, mobileNumber);
+                            sta.setString(4, password);
+                            sta.executeUpdate();
+                            JOptionPane.showMessageDialog(null,"Successfully registered!");
+                            Mainn guiForm=new Mainn();
+                            dispose();
+                            guiForm.show();
+                        }
+                    }
 
                 }
                 catch (ClassNotFoundException e1) {
@@ -248,16 +263,16 @@ public class SignUp extends JFrame {
         contentPane.add(Line);
         Line.setColumns(10);
         // Login shiljilt
-        JButton LoginButton = new JButton("БҮРТГЭЛТЭЙ ХАЯГААР НЭВТРЭХ");
+        JButton LoginButton = new JButton("Already have an account?");
         LoginButton.setForeground(Color.BLACK);
         LoginButton.setBackground(Color.BLACK);
-        LoginButton.setFont(new Font("Arial", Font.PLAIN, 11));
-        LoginButton.setBounds(463, 469, 267, 35);
+        LoginButton.setFont(new Font("Arial", Font.PLAIN, 12));
+        LoginButton.setBounds(506, 469, 196, 35);
         contentPane.add(LoginButton);
         LoginButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		Login guiLogin = new Login();
-        		JOptionPane.showMessageDialog(null,"Хуудас солигдлоо!");
+        		JOptionPane.showMessageDialog(null,"The page has changed!");
         		dispose();
         		try{
         			Thread.sleep(200);
